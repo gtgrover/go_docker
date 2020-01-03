@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  go_build:
+    build: ./GODOCK
+    volumes:
+      - ./shared:/shared
+      - ./go/src/go_app:/go/src/go_app
+    working_dir: /go/src/go_app
+    command: go build -o /shared/main .
+
+  go_run:
+    build: ./GODOCK
+    volumes:
+      - ./go/src/go_app:/go/src/go_app
+    working_dir: /go/src/go_app
+    command: go run main.go
+
+  bin_run:
+    build: ./GODOCK
+    volumes:
+      - ./shared:/shared
+    working_dir: /shared
+    command: ./main
