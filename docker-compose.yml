@@ -5,14 +5,14 @@ services:
     build: ./GODOCK
     volumes:
       - ./shared:/shared
-      - ./go/src/go_app:/go/src/go_app
+      - ./go/src:/go/src
     working_dir: /go/src/go_app
     command: go build -o /shared/main .
 
   go_run:
     build: ./GODOCK
     volumes:
-      - ./go/src/go_app:/go/src/go_app
+      - ./go/src:/go/src
     working_dir: /go/src/go_app
     command: go run main.go
 
