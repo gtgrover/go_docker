@@ -22,3 +22,14 @@ services:
       - ./shared:/shared
     working_dir: /shared
     command: ./main
+
+  go_api:
+    build: ./GODOCK
+    volumes:
+      - ./shared:/shared
+      - ./go/src:/go/src
+    working_dir: /shared/api-test/
+    command: go build -o /shared/go_api .
+    command: /shared/go_api
+    ports:
+      - "8080:8080"
