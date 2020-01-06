@@ -2,23 +2,45 @@ version: "2"
 
 services:
   go_build:
+    environment:
+      - CGO_ENABLED=0
     build: ./GODOCK
     volumes:
       - ./shared:/shared
-      - ./go/src:/go/src
+      - ./go:/go
     working_dir: /go/src/go_app
-    command: go build -o /shared/main .
+    command: go get .
+    command: go build -o /shared/http .
+
+  go_build_darwin:
+    environment:
+      - CGO_ENABLED=0
+      - GOOS=darwin
+      - GOARCH=amd64
+    build: ./GODOCK
+    volumes:
+      - ./shared:/shared
+      - ./go:/go
+    working_dir: /go/src/go_app
+    command: go get .
+    command: go build -o /shared/http_mac .
 
   go_run:
     build: ./GODOCK
     volumes:
-      - ./go/src:/go/src
+      - ./go:/go
+      - ./shared:/shared
     working_dir: /go/src/go_app
     command: go run main.go
+    ports:
+      - '8080:8080'
 
   bin_run:
     build: ./GOSCRATCH
     volumes:
       - ./shared:/shared
     working_dir: /shared
-    command: ./main one two three
+    command: ./main
+    network_mode: host
+    ports:
+      - '8080:8080'
