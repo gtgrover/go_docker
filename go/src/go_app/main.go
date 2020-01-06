@@ -10,4 +10,7 @@ func main() {
   }
 
   fmt.Println("First ARG", os.Args[1])
+  if len(os.Args) > 2 {
+	  fmt.Println("Second ARG", os.Args[2])
+  }
 }

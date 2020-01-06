@@ -17,8 +17,8 @@ services:
     command: go run main.go
 
   bin_run:
-    build: ./GODOCK
+    build: ./GOSCRATCH
     volumes:
       - ./shared:/shared
     working_dir: /shared
-    command: ./main
+    command: ./main one two three
