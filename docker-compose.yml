@@ -9,7 +9,6 @@ services:
       - ./shared:/shared
       - ./go:/go
     working_dir: /go/src/go_app
-    command: go get .
     command: go build -o /shared/http .
 
   go_build_darwin:
@@ -22,7 +21,6 @@ services:
       - ./shared:/shared
       - ./go:/go
     working_dir: /go/src/go_app
-    command: go get .
     command: go build -o /shared/http_mac .
 
   go_run:
