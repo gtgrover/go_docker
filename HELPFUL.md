@@ -17,10 +17,6 @@ https://golang.org/pkg/net/http/
 https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63
 
 
-### API CHALLENGE
-https://git.target.com/Security-Engineering/InfoSec-Challenge-Building-APIs/blob/master/README.md
-
-
 ### IF NEEDED TO GO getting
 docker-compose run --rm go_run /bin/sh
 * inside the container
